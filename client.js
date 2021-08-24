@@ -33,6 +33,63 @@ const employees = [
 
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
 
+/**
+ * 
+ *  
+ */
+
+function bonus(employee){ 
+  console.log('in bonus function');
+  let percent = 0; //check to see if let percent; is enough
+
+  if(employee.reviewRating <= 2) {
+    percent = 0;
+  }
+  else if(employee.reviewRating === 3) {
+    percent = .04;
+  }
+  else if(employee.reviewRating === 4) {
+    percent = .06;
+  }
+  else { //is it a 1-5 scale?
+    percent = .10; 
+  }
+
+  if(employee.employeeNumber.length === 4) {  //from line 60
+    percent += .05;
+  }
+
+  if(employee.annualSalary > 65000){  //from line 62
+    percent -= .01;
+  }
+
+  if(percent >= .13){  // from line 63
+    percent = .13;
+  }
+  return percent;
+  // createBonusObject(percent);
+}
+
+// console.log(`Atticus: ${bonus(employees[0])}`); //TEST RETURN atticus
+// console.log(`Scout: ${bonus(employees[2])}`); //TEST RETURN scout
+
+
+function createBonusObject(employee) {
+  let bonP = bonus(employee);
+
+  let newObject = {
+    name: employee.name,
+    bonusPercentage: bonP, // bonus % based on stuff
+    totalCompensation: employee.annualSalary * (1 + bonP), // total salary + bonus
+    totalBonus: bonP * employee.annualSalary
+  }
+  
+  
+}
+
+
+//bonus(employees[0]);
+
 // Take small steps! Don't write a for loop and two functions that do all of the calculations right away.
 // This problem is massive! Break the problem down. Use the debugger.
 // What is the fewest lines of code I can write and test to get just a little closer?
