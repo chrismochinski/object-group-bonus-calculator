@@ -1,1 +1,38 @@
 /* CSS */
+
+h1 {
+    text-align: center;
+    font-family: verdana, sans-serif;
+    font-size: 26px;
+    color: rgb(36, 64, 65);
+}
+
+h2 {
+    text-align: center;
+    font-family: verdana, sans-serif;
+    font-weight: lighter;
+    font-size: 15px;
+    opacity: 20%;
+}
+
+.center {
+    text-align: center;
+}
+
+button {
+    font-size: 14px;
+    font-family: verdana, sans-serif;
+}
+
+button:hover {
+    transition-duration: 1s;
+    background-color: rgb(201, 118, 201);
+}
+
+.entry {
+    background-color: rgb(36, 64, 65);
+    color: white;
+    font-family: verdana, sans-serif;
+    text-align: center;
+    border-radius: 0px 15px 15px 0px;   
+}

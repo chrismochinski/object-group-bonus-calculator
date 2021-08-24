@@ -77,30 +77,28 @@ function bonus(employee) {
 
 function createBonusObject(employee) {
   let bonP = bonus(employee);
-
+  let totBon = Math.round(bonP * employee.annualSalary);
   let newObject = {
     name: employee.name,
     bonusPercentage: bonP, // bonus % based on stuff
-    totalCompensation: parseInt(employee.annualSalary) + Math.round(bonP * employee.annualSalary), // total salary + bonus
-    totalBonus: Math.round(bonP * employee.annualSalary)
+    totalCompensation: parseInt(employee.annualSalary) + totBon, // total salary + bonus
+    totalBonus: totBon
   }
 
   return newObject;
 }
 
 function buttonPress() {  //WHEN BUTTON IS PRESSED RUN FUNCTION
-  $('p').append('<ul>');
   for (worker of employees) {
     let bonusValue = createBonusObject(worker);
     console.log(bonusValue);
-    $('p').append(`<b>${bonusValue.name}:</b> <br> 
+    $('p').append(`<div class = "entry"><b>${bonusValue.name}:</b> <br> 
     Bonus Percentage: ${bonusValue.bonusPercentage * 100}% <br>
     Total Bonus: $${bonusValue.totalBonus} <br>
-    Total Annual Compensation: $${bonusValue.totalCompensation}
-    <br><br>`);
+    Total Annual Compensation: $${bonusValue.totalCompensation}<br>
+    </div><br>`);
     // displayBonus();
   }
-  $('p').append('</ul>');
 
   $('#equalsButton').attr("disabled", true); //We've calculated the values, we don't need the button anymore
 }
