@@ -38,32 +38,32 @@ const employees = [
  *  
  */
 
-function bonus(employee){ 
+function bonus(employee) {
   // console.log('in bonus function');
   let percent = 0; //check to see if let percent; is enough
 
-  if(employee.reviewRating <= 2) {
+  if (employee.reviewRating <= 2) {
     percent = 0;
   }
-  else if(employee.reviewRating === 3) {
+  else if (employee.reviewRating === 3) {
     percent = .04;
   }
-  else if(employee.reviewRating === 4) {
+  else if (employee.reviewRating === 4) {
     percent = .06;
   }
   else { //is it a 1-5 scale?
-    percent = .10; 
+    percent = .10;
   }
 
-  if(employee.employeeNumber.length === 4) {  //from line 60
+  if (employee.employeeNumber.length === 4) {  //from line 60
     percent += .05;
   }
 
-  if(employee.annualSalary > 65000 && employee.reviewRating > 2){  //from line 62
+  if (employee.annualSalary > 65000 && employee.reviewRating > 2) {  //from line 62
     percent -= .01;
   }
 
-  if(percent >= .13){  // from line 63
+  if (percent >= .13) {  // from line 63
     percent = .13;
   }
   return percent;
@@ -84,14 +84,29 @@ function createBonusObject(employee) {
     totalCompensation: parseInt(employee.annualSalary) + Math.round(bonP * employee.annualSalary), // total salary + bonus
     totalBonus: Math.round(bonP * employee.annualSalary)
   }
-  
+
   return newObject;
 }
 
-for(worker of employees){
-  console.log(createBonusObject(worker));
+function buttonPress() {  //WHEN BUTTON IS PRESSED RUN FUNCTION
+  $('p').append('<ul>');
+  for (worker of employees) {
+    let bonusValue = createBonusObject(worker);
+    console.log(bonusValue);
+    $('p').append(`<li>${bonusValue.name}: ${bonusValue.bonusPercentage * 100}%</li>`);
+    // displayBonus();
+  }
+  $('p').append('</ul>');
 }
 
+//================================
+
+$(document).ready(readyNow);
+
+function readyNow() {
+  console.log('JQ ready!');
+  $('#equalsButton').on('click', buttonPress);
+}
 //bonus(employees[0]);
 
 // Take small steps! Don't write a for loop and two functions that do all of the calculations right away.
