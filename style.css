@@ -32,9 +32,10 @@ button:hover {
     font-size: 40px;
 }
 
-/* button:not(:hover) {
+button:disabled {
     font-size: 14px;
-} */
+    font-family: verdana, sans-serif;
+}
 
 .entry {
     background-color: rgb(36, 64, 65);
