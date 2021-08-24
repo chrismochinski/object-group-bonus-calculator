@@ -39,7 +39,7 @@ const employees = [
  */
 
 function bonus(employee){ 
-  console.log('in bonus function');
+  // console.log('in bonus function');
   let percent = 0; //check to see if let percent; is enough
 
   if(employee.reviewRating <= 2) {
@@ -59,7 +59,7 @@ function bonus(employee){
     percent += .05;
   }
 
-  if(employee.annualSalary > 65000){  //from line 62
+  if(employee.annualSalary > 65000 && employee.reviewRating > 2){  //from line 62
     percent -= .01;
   }
 
@@ -69,6 +69,7 @@ function bonus(employee){
   return percent;
   // createBonusObject(percent);
 }
+// Math.round(number);
 
 // console.log(`Atticus: ${bonus(employees[0])}`); //TEST RETURN atticus
 // console.log(`Scout: ${bonus(employees[2])}`); //TEST RETURN scout
@@ -80,13 +81,16 @@ function createBonusObject(employee) {
   let newObject = {
     name: employee.name,
     bonusPercentage: bonP, // bonus % based on stuff
-    totalCompensation: employee.annualSalary * (1 + bonP), // total salary + bonus
-    totalBonus: bonP * employee.annualSalary
+    totalCompensation: parseInt(employee.annualSalary) + Math.round(bonP * employee.annualSalary), // total salary + bonus
+    totalBonus: Math.round(bonP * employee.annualSalary)
   }
   
-  
+  return newObject;
 }
 
+for(worker of employees){
+  console.log(createBonusObject(worker));
+}
 
 //bonus(employees[0]);
 
@@ -97,4 +101,3 @@ function createBonusObject(employee) {
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
-console.log( employees );
