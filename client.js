@@ -93,10 +93,16 @@ function buttonPress() {  //WHEN BUTTON IS PRESSED RUN FUNCTION
   for (worker of employees) {
     let bonusValue = createBonusObject(worker);
     console.log(bonusValue);
-    $('p').append(`<li>${bonusValue.name}: ${bonusValue.bonusPercentage * 100}%</li>`);
+    $('p').append(`<b>${bonusValue.name}:</b> <br> 
+    Bonus Percentage: ${bonusValue.bonusPercentage * 100}% <br>
+    Total Bonus: $${bonusValue.totalBonus} <br>
+    Total Annual Compensation: $${bonusValue.totalCompensation}
+    <br><br>`);
     // displayBonus();
   }
   $('p').append('</ul>');
+
+  $('#equalsButton').attr("disabled", true); //We've calculated the values, we don't need the button anymore
 }
 
 //================================
